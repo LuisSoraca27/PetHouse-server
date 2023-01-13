@@ -18,7 +18,6 @@ const Services = db.define('services', {
     available: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: 'available'
     },
     clinicId: {
         type: DataTypes.INTEGER,

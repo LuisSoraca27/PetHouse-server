@@ -16,13 +16,12 @@ const { ImgsClinic } = require('../models/imgsClinic.model')
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDSbeu0ry6qOl5-x1C6ls1YkizL8q8ysz8",
-  authDomain: "pethouse-d3abc.firebaseapp.com",
-  projectId: "pethouse-d3abc",
-  storageBucket: "pethouse-d3abc.appspot.com",
-  messagingSenderId: "188088632866",
-  appId: "1:188088632866:web:1fed0282b5eee0a06c6c7b",
-  measurementId: "G-XW6XDS7QZ6"
+    apiKey: "AIzaSyDtUpze6WBA0Spcs0pfuorqgM6u8BY_98A",
+    authDomain: "pet-house-34559.firebaseapp.com",
+    projectId: "pet-house-34559",
+    storageBucket: "pet-house-34559.appspot.com",
+    messagingSenderId: "25859496154",
+    appId: "1:25859496154:web:5e672e574b6fab4b09ade3"
 };
 
 // Initialize Firebase
