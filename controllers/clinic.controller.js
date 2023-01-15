@@ -1,5 +1,6 @@
 //models
 const { Clinic } = require("../models/clinic.models");
+const { HourAttention } = require("../models/hourAttention.model");
 const { ImgsClinic } = require("../models/imgsClinic.model");
 
 //utils
@@ -32,17 +33,17 @@ const createClinic = catchAsync(async (req, res, next) => {
 });
 
 const getAllClinic = catchAsync(async (req, res, next) => {
- let clinics = await Clinic.findAll({
+  let clinics = await Clinic.findAll({
     where: { status: "active" },
     attributes: { exclude: ["createdAt", "updatedAt"] },
     include: { model: ImgsClinic },
   });
 
- clinics = await getClinicsImgsUrls(clinics)
+  clinics = await getClinicsImgsUrls(clinics)
 
-   res.status(200).json({
+  res.status(200).json({
     status: "success",
-    data: {clinics},
+    data: { clinics },
   });
 });
 
@@ -51,7 +52,7 @@ const getClinicById = catchAsync(async (req, res, next) => {
 
   let clinic = await Clinic.findOne({
     where: { id, status: "active" },
-    include: { model: ImgsClinic },
+    include: { model: ImgsClinic, include: [{ model: HourAttention, where: { status: 'active' } }] },
   });
 
   clinic = await getClinicImgsUrls(clinic);
@@ -62,12 +63,12 @@ const getClinicById = catchAsync(async (req, res, next) => {
   });
 });
 
-const deleteClinic = catchAsync(async (req,res,next) => {
+const deleteClinic = catchAsync(async (req, res, next) => {
   const { clinic } = req
 
- await clinic.update({status:'delete'})
+  await clinic.update({ status: 'delete' })
 
-  res.status(204).json({status:'success'})
+  res.status(204).json({ status: 'success' })
 })
 
 module.exports = {
